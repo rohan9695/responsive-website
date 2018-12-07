@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CSS Grid</title>
+  <style>
+  		body{
+  			margin: 0;
+  			font-family: Arial, Helvetica, sans-serif;
+  			background: #333;
+  			color: #fff;
+  			font-size: :1.1em;
+  			line-height:1.5;
+  			text-align:center;
+
+  		}
+  		.center
+  		{
+  			background: #333;
+  			position: absolute;
+  			top: 85%;
+  			left: 48%;
+  			transform:translate(-50%, -50%);
+  		}
+  		a{
+
+  			font-size: 20px;
+  			font-family: arial;
+  			text-decoration:none;
+  			text-transform: uppercase;
+  			transform-style: preserve-3d;
+  			position: relative;
+  			
+  			transition: .5s;
+    
+  		}
+  		a:before
+  		{
+  			content: attr(title);
+  			position: absolute;
+  			top: 0;
+  			left: 0;
+  			padding: 15px,40px;
+  			background: #FFf;
+  			color: #000;
+  			transition: .5s;
+  			transform-origin: right;
+  			transform:translateX(-100%)rotateY(90deg);
+
+  		}
+  		a:after
+  		{
+  			content: attr(title);
+  			position: absolute;
+  			top: 0;
+  			left: 0;
+  			padding: 15px,40px;
+  			background: #333;
+  			color: #fff;
+  			border: 3px solid #000;
+  			transition: .5s;
+  			transform-origin: left;
+  			transform:translateX(0)rotateY(0deg);
+
+  		}
+  		a:hover:before
+  		{
+  			transform:translateX(0)rotateY(0deg);
+
+  		}
+  		a:hover:after
+  		{
+  			transform:translateX(100%)rotateY(90deg);
+
+  		}
+
+  		img{
+  			display: block;
+  			width: 100%;
+  			height: auto;
+  			box-shadow: 10px 10px 5px grey;
+
+  		}
+  		h1, h2, h3{
+  			margin: 0;
+  			padding: 1em 0;
+
+  		}
+  		p{
+  			margin: 0;
+  			padding: 1em 0;
+
+  		}
+  		.btn{
+  			display:inline-block;
+  			background:#f44336;
+  			color:#fff;
+  			text-decoration:none;
+  			padding: 1em 2em;
+  			border: 1px solid #666;
+  			margin:  .5em 0;
+  			-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+
+  		}
+  		.btn:hover {
+  			background: #eaeaea;
+  			color: #333;
+  		}
+  		#showcase{
+  			min-height: 450px;
+  			color: #fff;
+  			text-align: center;
+  		}
+  		#showcase .bg-image {
+  			position: absolute;
+  			background:#333 url('https://images.alphacoders.com/868/868377.jpg');
+  			background-position: center;
+  			background-repeat: no-repeat;
+  			background-size: cover;
+  			width: 100%;
+  			height: 450px;
+  			z-index: -1;
+  			opacity: 0.4;
+  		}
+  		#showcase h1{
+  			padding-top: 100px;
+  			padding-bottom: 0;
+  		}
+  		#showcase .content-wrap,
+  		#section-1 .content-wrap{
+  			padding: 0 1.5em;
+  		}
+  		#section-1{
+  			background:#eaeaea;
+  			color: #333;
+  			padding-bottom: 2em;
+
+  		}
+  		#section-2{
+  			padding: 2em 1em 1em;
+
+  		}
+  		#section-2 ul{
+  			list-style: none;
+  			margin: 0;
+  			padding:0;
+  		}
+  		#section-2 li{
+  			margin-bottom: 1em;
+  			background:#fff;
+  			color:#333;
+  		}
+  		.card-content{
+  			padding:1.5em;
+
+  		}
+  		#section-3{
+  			background:#fff;
+  			color:#333;
+  			padding:2em;
+  			grid-gap: 20px;
+  			background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+  		}
+  		#section-4 .box{
+  			padding-bottom: 2em;
+  			color:#fff;
+
+  		}
+  		#section-4 .box:first-child{
+  			background:#2690d4;
+  			
+  		}
+  		#main-footer{
+  			padding:2em;
+  			background:#000;
+  			color:#fff;
+  			text-align: center;
+  		}
+  		#main-footer{
+  			colo nr:#fff;
+  			text-decoration: none;
+  		}
+  		/*@media(min-width: 700px){
+  			.grid{
+  				display: grid;
+  				grid-template-columns: 1fr repeat(2,minmax(auto,25em)) 1fr;
+  			}
+  			#section-1 .content-text{
+  				columns: 2;
+  				column-gap: 2em;
+  			}
+  			#section-1 .content-text p {
+  				padding-top: 0;
+  			}
+
+  			.content-wrap,
+  			#section-2 ul{
+  				grid-column: 2/4;
+  			}
+  			
+  			.boxx,
+  			#section-4 ul{
+  				grid-column: 2/4;
+  			}
+  			.box1, 
+  			#main-footer ul{
+  				grid-column: 2/4;
+  			}
+  			#section-2 ul{
+  				display: flex;
+  				justify-content: space-around;
+  			}
+  			#section-2 li{
+  				width: 41%;
+  			}
+  		}*//*
+  		@media screen and (min-width: 500px) and (max-width: 1000px){
+
+  				.grid{
+  				display: grid;
+  				grid-template-columns: 1fr repeat(2,minmax(auto,25em)) 1fr;
+  			}
+  			#section-1 .content-text{
+  				columns: 2;
+  				column-gap: 2em;
+  			}
+  			#section-1 .content-text p {
+  				padding-top: 0;
+  			}
+
+  			.content-wrap,
+  			#section-2 ul{
+  				grid-column: 2/4;
+  			}
+  			
+  			.boxx,
+  			#section-4 ul{
+  				grid-column: 2/4;
+  			}
+  			.box1, 
+  			#main-footer ul{
+  				grid-column: 2/4;
+  			}
+  			#section-2 ul{
+  				display: flex;
+  				justify-content: space-around;
+  			}
+  			#section-2 li{
+  				width: 41%;
+  			}
+  		}*/
+  		@media screen and (min-width: 500px){
+  				.grid{
+  				display: grid;
+  				grid-template-columns: 1fr repeat(2,minmax(auto,25em)) 1fr;
+  			}
+  			#section-1 .content-text{
+  				columns: 2;
+  				column-gap: 2em;
+  			}
+  			#section-1 .content-text p {
+  				padding-top: 0;
+  			}
+
+  			.content-wrap,
+  			#section-2 ul{
+  				grid-column: 2/4;
+  			}
+  			
+  			.boxx,
+  			#section-4 ul{
+  				grid-column: 2/4;
+  			}
+  			.box1, 
+  			#main-footer ul{
+  				grid-column: 2/4;
+  			}
+  			#section-2 ul{
+  				display: flex;
+  				justify-content: space-around;
+  			}
+  			#section-2 li{
+  				width: 41%;
+  			}
+  		}
+  		@-webkit-keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+
+	}
+
+	
+  </style>
+</head>
+<body>
+ <header id="showcase" class="grid">
+ 	<div class="bg-image"></div>
+ 	<div class="content-wrap">
+
+ 	<h1>Welcome to Movie Hall New York</h1>
+ 	<p> </p>
+ 	</div>
+ </header>
+ <main id="main">
+ 	<section id="section-1" class="grid">
+ 		<div class="content-wrap">
+ 			<h2 class="content-title">Recently Released!!</h2>
+ 			<p>  </p>
+ 			
+  			<div class="center">
+ 			<a href="https://www.marvel.com/" title="New Movies"></a>
+ 			</div>
+ 		</div>
+ 	</section>
+
+ 	<section id="section-2" class="grid">
+ 		<ul>
+ 			<li>
+ 				<div class="card">
+					<img src="https://hdqwalls.com/download/black-panther-amazing-fan-art-d5-1600x1200.jpg"> 			
+					<div class="card-content">
+						<h3 class="card-title">Black Panther</h3>
+						<a href="#section-b" class="btn">Buy Tickets</a>
+						<p></p>
+					</div>		
+
+ 				</div>
+ 			</li>
+ 			<li>
+ 				<div class="card">
+					<img src="https://images2.alphacoders.com/824/824755.png"> 			
+					<div class="card-content">
+						<h3 class="card-title">Captain Marvel</h3>
+						<a href="#section-b" class="btn">Buy Tickets</a>
+						<p></p>
+					</div>		
+
+ 				</div>
+ 			</li>
+ 			<li>
+ 				<div class="card">
+					<img src="https://hdqwalls.com/download/thanos-infinity-gauntlet-ek-1600x1200.jpg"> 			
+					<div class="card-content">
+						<h3 class="card-title">INFINITY WAR</h3>
+						<a href="#section-b" class="btn">Buy Tickets</a>
+						<p></p>
+					</div>		
+
+ 				</div>
+ 			</li>
+ 			
+ 			<li>
+ 				<div class="card">
+					<img src="https://hdqwalls.com/download/thor-ragnarok-2017-movie-8k-h7-1600x1200.jpg"> 			
+					<div class="card-content">
+						<h3 class="card-title">Thor Ragnarok</h3>
+						<a href="#section-b" class="btn">Buy Tickets</a>
+						<p></p>
+					</div>		
+
+ 				</div>
+ 			</li>
+ 			<li>
+ 				<div class="card">
+					<img src="https://hdqwalls.com/download/spiderman-4k-ps-logo-ox-1600x1200.jpg"> 			
+					<div class="card-content">
+						<h3 class="card-title">Spider Man:part 3</h3>
+						<a href="#section-b" class="btn">Buy Tickets</a>
+						<p></p>
+					</div>		
+
+ 				</div>
+ 			</li>
+ 			<li>
+ 				<div class="card">
+					<img src="https://hdqwalls.com/download/ant-man-and-the-wasp-latest-poster-ju-1600x1200.jpg"> 			
+					<div class="card-content">
+						<h3 class="card-title">Ant Man and wasp</h3>
+						<a href="#section-b" class="btn">Buy Tickets</a>
+						<p></p>
+					</div>		
+
+ 				</div>
+ 			</li>
+ 		</ul>
+ 		
+ 	</section>
+ 	<section id="section-3" class="grid">
+ 		<div class="content-wrap">
+ 			<h2 class="content-title"></h2>
+ 			<p></p>	
+ 		</div>
+
+ 	</section>
+ 	<section id="section-4" class="grid">
+ 		<div class="boxx">
+ 			<h2 class="content-title">Contact Us</h2>
+ 			<p></p>
+ 			<p>contactrn0663n@pace.edu</p>
+
+ 		</div>
+ 		
+ 	</section>
+
+ </main>
+ <footer id="main-footer" class="grid">
+ 	<div class="box1"><p>Reward Your Marvel Fandom</p>
+
+ 	<div>Copyrights &copy Rohan Naik</div>
+ 		<div>Project by <a href="http://ezchindi.com"
+ 			target="_blank">Rohan</a>	</div>
+ 	</div>		
+ 	
+ </footer>
+</body>
+</html>
